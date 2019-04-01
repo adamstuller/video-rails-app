@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2019_03_30_093803) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-
-  create_table :videos do |t|
-    t.string :name
-    t.text :desc
-
-    t.timestamps
+  create_table "videos", force: :cascade do |t|
+    t.string "name"
+    t.text "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'materialize-sass'
 
-gem 'streamio-ffmpeg'
+gem 'sidekiq'
 
 
 
