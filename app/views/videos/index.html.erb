@@ -1,0 +1,42 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+
+<body>
+
+
+<%= render 'navbar' %>
+
+  <div class="row">
+
+
+    <div class="s">
+
+      <% @videos.each do |video| %>
+        <div class="col m2">
+            <div class="card blue lighter-1">
+              <div class="card-image">
+                <%= link_to video do %>
+                  <%= image_tag(url_for(video.thumbnail)) %>
+                <%end %>
+                <span class="card-title"><%= video.name %></span>
+              </div>
+              <div class="card-content white-text">
+                <p><%= video.desc %></p>
+              </div>
+              <div class="card-action">
+                <%= link_to 'Edit', edit_video_path(video), class: "white-text" %>
+                <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, class: "white-text" %>
+              </div>
+            </div>
+        </div>
+
+      <% end %>
+
+  </div>
+
+
+
+  <br>
+
+  <%= link_to 'New Video', new_video_path %>
+</body>

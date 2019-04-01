@@ -7,9 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="nav-wrapper light-blue">
+    <div class="container">
+      <a href="#" class="brand-logo center">
+        <%= image_tag("bison_icon.png" , size: "50x40") %>
+      </a>
+      <a href="#" class="sidebar-trigger ">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down ">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Components</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+  <%= yield %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
