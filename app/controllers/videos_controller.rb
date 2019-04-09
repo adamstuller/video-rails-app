@@ -9,6 +9,7 @@ class VideosController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -41,7 +42,7 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    VideoWorker.perform_async(@video.id, "Halloc")
+    # VideoWorker.perform_async(@video.id, "Halloc")
 
     @video.destroy
     respond_to do |format|
@@ -53,7 +54,7 @@ class VideosController < ApplicationController
 
   def set_video
     @video = Video.find(params[:id])
-    VideoWorker.perform_async(@video.id, "Hallloc")
+    # VideoWorker.perform_async(@video.id, "Hallloc")
 
   end
 

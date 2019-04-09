@@ -40,6 +40,8 @@ gem 'materialize-sass'
 
 gem 'sidekiq'
 
+gem 'jquery-rails'
+
 
 
 group :development, :test do
