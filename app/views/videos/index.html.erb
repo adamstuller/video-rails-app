@@ -1,18 +1,13 @@
 <!--<p id="notice"><%#= notice %></p>-->
 
 
-
-
-<%= render 'navbar' %>
-
   <div class="row">
 
-
-    <div class="s">
+<!--    <div class="s">-->
 
       <% @videos.each do |video| %>
-        <div class="col m2">
-            <div class="card blue lighter-1">
+        <div class="col m3">
+            <div class="card blue lighten-1">
               <div class="card-image">
                 <%= link_to video do %>
                   <%= image_tag(url_for(video.thumbnail)) %>
@@ -33,8 +28,5 @@
 
   </div>
 
-
-
   <br>
 
-  <%= link_to 'New Video', new_video_path %>
