@@ -11,7 +11,8 @@
         <a href="#" class="brand-logo right">.thunderstrike</a>
         <ul class="sidenav" id="mobile-demo">
           <li> <%= link_to 'Home', root_path %></li>
-<!--          <li><a href="#">Courses</a></li>-->
+          <li> <%= session_link %></li>
+          <li> <%= link_to 'Sign up', new_user_path %></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
 
         </ul>
@@ -19,7 +20,8 @@
         <ul id="nav-mobile" class="left hide-on-med-and-down">
 
           <li> <%= link_to 'Home', root_path %></li>
-<!--          <li><a href="#">Courses</a></li>-->
+          <li> <%= session_link %></li>
+          <li> <%= link_to 'Sign up', new_user_path %></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown2">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
 
         </ul>

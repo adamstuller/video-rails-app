@@ -19,7 +19,7 @@
 
 
 
-$(document).ready(function(){
+$( document ).on('turbolinks:load',function(){
     $(".dropdown-trigger").dropdown();
     $('.sidenav').sidenav();
     $("#submit-text-button").click( function (e) {

@@ -4,6 +4,8 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle]
 
+  skip_before_action :require_user, only: [:index]
+
   def index
     @videos = Video.paginate(page: params[:page])
   end
