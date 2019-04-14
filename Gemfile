@@ -41,7 +41,7 @@ gem 'material_icons'
 gem 'sidekiq'
 gem  'hirb'
 gem 'jquery-rails'
-
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 
 group :development, :test do

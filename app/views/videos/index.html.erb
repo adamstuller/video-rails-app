@@ -4,29 +4,37 @@
   <div class="row">
 
 <!--    <div class="s">-->
+    <div id="products">
 
-      <% @videos.each do |video| %>
-        <div class="col m3">
-            <div class="card blue lighten-1">
-              <div class="card-image">
-                <%= link_to video do %>
-                  <%= image_tag(url_for(video.thumbnail)) %>
-                <%end %>
-                <span class="card-title"><%= video.name %></span>
-              </div>
-              <div class="card-content white-text">
-                <p><%= video.desc %></p>
-              </div>
-              <div class="card-action">
-                <%= link_to 'Edit', edit_video_path(video), class: "white-text" %>
-                <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, class: "white-text" %>
-              </div>
-            </div>
-        </div>
 
-      <% end %>
+        <% @videos.each do |video| %>
+          <div class="col m3">
+              <div class="card blue lighten-1">
+                <div class="card-image">
+                  <%= link_to video do %>
+                    <%= image_tag(url_for(video.thumbnail)) %>
+                  <%end %>
+                  <span class="card-title"><%= video.name %></span>
+                </div>
+                <div class="card-content white-text">
+                  <p><%= video.desc %></p>
+                </div>
+                <div class="card-action">
+                  <%= link_to 'Edit', edit_video_path(video), class: "white-text" %>
+                  <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, class: "white-text" %>
+                </div>
+              </div>
+          </div>
+
+        <% end %>
+    </div>
+
 
   </div>
+  <div class="row ">
+    <%= will_paginate @videos , :id => 'infinite-scrolling' %>
+  </div>
 
-  <br>
+
+
 

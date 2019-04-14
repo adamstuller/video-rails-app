@@ -25,7 +25,7 @@
       <form >
         <div class="input-field col s12">
           <label for="subtitle">Write your text here</label>
-          <input placeholder="Your text" id="subtitle" type="text" class="validate active" active="true">
+          <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active" active="true">
           <button type="submit" id="submit-text-button" class="waves-effect waves-light btn">Edit</button>
         </div>
       </form>
@@ -34,6 +34,11 @@
 
   </div>
 </div>
+
+
+<script>
+  var id = <%= @video.id %>
+</script>
 
 
 

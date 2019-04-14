@@ -2,10 +2,10 @@
 
 
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle]
 
   def index
-    @videos = Video.all
+    @videos = Video.paginate(page: params[:page])
   end
 
   def show
@@ -50,6 +50,10 @@ class VideosController < ApplicationController
     end
   end
 
+  def add_subtitle
+    @video.add_subtitle(params[:subtitle])
+  end
+
   private
 
   def set_video
@@ -59,6 +63,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :desc, :video_file, :thumbnail)
+    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id , :subtitle, :page)
   end
 end

@@ -18,9 +18,25 @@
 //= require_tree .
 
 
+
 $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('.sidenav').sidenav();
+    $("#submit-text-button").click( function (e) {
+        e.preventDefault()
+
+        const subtitle = $("#subtitle").val();
+        jQuery.post(`http://localhost:3000/videos/${id}/subtitle`,
+            {video_id: id,
+            subtitle: subtitle}, () => {
+                location.reload()
+            })
+
+
+
+    })
+
+
 })
 
 
