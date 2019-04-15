@@ -19,7 +19,7 @@
       <ObjectId>16385</ObjectId>
       <StateNumber>570</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>912</IntrospectionStateNumber>
+      <IntrospectionStateNumber>943</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16403|16405|1
@@ -116,7 +116,7 @@ sequence|table|16456|16458|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>913</IntrospectionStateNumber>
+      <IntrospectionStateNumber>944</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -231,7 +231,7 @@ sequence|table|16456|16458|1
     <table id="36" parent="20" name="users">
       <ObjectId>16458</ObjectId>
       <Owner>dbs</Owner>
-      <StateNumber>910</StateNumber>
+      <StateNumber>942</StateNumber>
     </table>
     <table id="37" parent="20" name="videos">
       <ObjectId>16435</ObjectId>
@@ -472,20 +472,40 @@ blob_id</ColNames>
       <StateNumber>910</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="72" parent="36" name="users_pkey">
+    <column id="72" parent="36" name="password_digest">
+      <Position>4</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>920</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="73" parent="36" name="created_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>942</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="74" parent="36" name="updated_at">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>942</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="75" parent="36" name="users_pkey">
       <ObjectId>16465</ObjectId>
       <StateNumber>910</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="73" parent="36" name="users_pkey">
+    <key id="76" parent="36" name="users_pkey">
       <ObjectId>16466</ObjectId>
       <StateNumber>910</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="74" parent="37" name="id">
+    <column id="77" parent="37" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -493,39 +513,39 @@ blob_id</ColNames>
       <DefaultExpression>nextval(&apos;videos_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="75" parent="37" name="name">
+    <column id="78" parent="37" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>575</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="76" parent="37" name="desc">
+    <column id="79" parent="37" name="desc">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <StateNumber>575</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="77" parent="37" name="created_at">
+    <column id="80" parent="37" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="78" parent="37" name="updated_at">
+    <column id="81" parent="37" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="79" parent="37" name="videos_pkey">
+    <index id="82" parent="37" name="videos_pkey">
       <ObjectId>16442</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="80" parent="37" name="videos_pkey">
+    <key id="83" parent="37" name="videos_pkey">
       <ObjectId>16443</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>id</ColNames>

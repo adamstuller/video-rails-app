@@ -1,15 +1,14 @@
 const infiniteScrolling = () => {
     const THRESHOLD = 100;
-    const $paginElem = $('#infinite-scrolling')
-    const $products = $('#products')
 
 
 
-    if( $paginElem.length ){
+    if( $('#infinite-scrolling').length ){
 
-        $paginElem.hide()
+        $('#infinite-scrolling').hide()
 
         $(window).scroll( () => {
+            $('#infinite-scrolling').hide()
             let more_posts_url = $(' a.next_page').attr('href')
             if ( more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - THRESHOLD){
                 $('#infinite-scrolling').text('Fetching')
@@ -20,7 +19,7 @@ const infiniteScrolling = () => {
                         if(el.nodeName === 'MAIN'){
                             const newProds = el.children[0].children[0].children[0]
 
-                            $products.append(newProds)
+                            $('#products').append(newProds)
                             nextPagination = el.children[0].children[1].children[0]
                             console.log('replacing ' + nextPagination.children[2])
                             $('#infinite-scrolling').replaceWith($(nextPagination))

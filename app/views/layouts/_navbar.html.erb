@@ -12,18 +12,22 @@
         <ul class="sidenav" id="mobile-demo">
           <li> <%= link_to 'Home', root_path %></li>
           <li> <%= session_link %></li>
-          <li> <%= link_to 'Sign up', new_user_path %></li>
-          <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
-
+          <% if !logged_in? %>
+            <li> <%= link_to 'Sign up', new_user_path %></li>
+          <% else %>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
+           <% end %>
         </ul>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
 
           <li> <%= link_to 'Home', root_path %></li>
           <li> <%= session_link %></li>
-          <li> <%= link_to 'Sign up', new_user_path %></li>
-          <li><a class="dropdown-trigger" href="#" data-target="dropdown2">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
-
+          <% if !logged_in? %>
+            <li> <%= link_to 'Sign up', new_user_path %></li>
+          <% else %>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Videos<i class="material-icons right">arrow_drop_down</i></a></li>
+          <% end %>
         </ul>
       </div>
     </div>
