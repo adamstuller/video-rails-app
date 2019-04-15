@@ -32,3 +32,25 @@ pozadí a zobrazí sa mu. Mohol by som ukladať iba zmenené video ale problém 
 nastal keby chcel pouźívateľ v budúcnosti toto video zmeniť. Kvoli rýchlosti aplikácie by zasa nebolo praktické
 ukladať iba parametre a potom vždy nanovo skladať video. Preto si myslím že najlepšie riešenie
 je ukladať aj aktuálnu verziu videa, pomocou aktive storage aj kroky ako sa k tejto verzií používateľ dostal.
+
+
+
+# Druhé odovzdanie
+
+Verzia projektu na druhé odovzdanie obsahuje pridanú funkcionalitu. Do databázy som pridal 
+novú tabuľku Users, v ktorej sa nachádzaju všetci registrovaný používatelia. K nim som 
+implementoval signup, login a logout. 
+
+Pridal som aj autentifikáciu, zamedzujem neprihlásenému návštevníkovi navštíviť niektoré stránky, na ktoré nemá
+prístup. 
+
+K index akcií pre používateľov aj pre videá som implementoval pagination pomocou infinite scrolling. 
+
+Prerobil som štýly na viacerých obrazovkách. Začal som pracovať na úprave videií. Ako prvú 
+som pridal možnosť pridania textu do videa. Na tomto je ale ešte velmi veľa práce, keďźe
+to zatial nefunguje asynchronne cez background joby.
+
+Naplnil som databázu falošnými údajmi. Použil som na to gem Faker. Vytvoril som milion falošných používateľov
+kedže to je dabulk, ktorá sa dá relativne jednoducho vierohodne naplniť. Videí je v projekte iba okolo 5000.
+Pridanie videa, spolu s dvoma súbormi na thumbnail a video súbor je totižto oveľa zložitejšia operácia cez 
+viacero tabuliek. 
