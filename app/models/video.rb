@@ -5,6 +5,9 @@ class Video < ApplicationRecord
 
   after_create :after_create
 
+  has_many :video_tags
+  has_many :tags, through: :video_tags
+
   has_one_attached :video_file
   has_one_attached :thumbnail
 
@@ -43,5 +46,21 @@ class Video < ApplicationRecord
         filename: 'new_video'
       )
     end
+  end
+
+  def tagged_with(tag_names)
+    tagged_videos = []
+    tag_names.each do |name|
+      tagged_videos.append Tag.find_by(:name => name).videos
+    end
+    tagged_videos
+  end
+
+  def tag_counts
+    Tag.select('tags.*, count(video_tags.tag_id) as count').joins(:video_tags).group('tags.id')
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
   end
 end
