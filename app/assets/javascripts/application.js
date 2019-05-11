@@ -31,12 +31,7 @@ $( document ).on('turbolinks:load',function(){
             subtitle: subtitle}, () => {
                 location.reload()
             })
-
-
-
     })
-
-
 })
 
 
