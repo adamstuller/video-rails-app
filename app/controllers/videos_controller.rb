@@ -7,7 +7,16 @@ class VideosController < ApplicationController
   skip_before_action :require_user, only: [:index]
 
   def index
-    @videos = Video.paginate(page: params[:page])
+    require 'will_paginate/array'
+    # @videos = Video.paginate(page: params[:page])
+    @all_tags = Tag.all
+
+    if params[:tag]
+      @videos = Video.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
+    else
+      @videos = Video.paginate(page: params[:page])
+    end
+
   end
 
   def show
@@ -16,13 +25,22 @@ class VideosController < ApplicationController
 
   def new
     @video = Video.new
+    @all_tags = Tag.all
+    @curr_tags = @video.tags.to_a
   end
 
   def edit
+    @all_tags = Tag.all
+    @curr_tags = @video.tags.to_a
   end
 
   def create
-    @video = Video.new(video_params)
+
+    tag_hash = {"tags" => Tag.get_tags(video_params[:tag_list]) }
+    new_params = video_params.merge(tag_hash)
+    new_params.delete('tag_list')
+
+    @video = Video.new(new_params)
 
     respond_to do |format|
       if @video.save
@@ -35,7 +53,11 @@ class VideosController < ApplicationController
 
   def update
     respond_to do |format|
-      if @video.update(video_params)
+      tag_hash = {"tags" => Tag.get_tags(video_params[:tag_list]) }
+      new_params = video_params.merge(tag_hash)
+      new_params.delete('tag_list')
+
+      if @video.update(new_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
       else
         format.html { render :edit }
@@ -65,6 +87,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id , :subtitle, :page)
+    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id , :subtitle, :page, :tag_list, :tags)
   end
 end

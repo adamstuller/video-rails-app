@@ -19,7 +19,7 @@
       <ObjectId>16385</ObjectId>
       <StateNumber>570</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>27124</IntrospectionStateNumber>
+      <IntrospectionStateNumber>27153</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16403|16405|1
@@ -118,7 +118,7 @@ sequence|table|16539|16541|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>27125</IntrospectionStateNumber>
+      <IntrospectionStateNumber>27154</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>

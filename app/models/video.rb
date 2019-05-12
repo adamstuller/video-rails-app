@@ -33,9 +33,7 @@ class Video < ApplicationRecord
     temp_storage = Rails.root.join('tmp', 'storage', 'temp.mp4').to_s
 
 
-    if File.file?(temp_storage)
-      File.delete(temp_storage)
-    end
+    File.delete(temp_storage) if File.file?(temp_storage)
 
     system `ffmpeg -i #{video_path} -vf drawtext="fontsize=50: fontcolor=white: text='#{subtitle}': x=(w-text_w)/2: y=(h-text_h)*(3/4)"  #{temp_storage}`
 
@@ -48,17 +46,22 @@ class Video < ApplicationRecord
     end
   end
 
-  def tagged_with(tag_names)
+  def self.tagged_with(tag_names)
+    require 'set'
+    ids = Set.new
     tagged_videos = []
-    tag_names.each do |name|
-      tagged_videos.append Tag.find_by(:name => name).videos
+    Tag.where(name: tag_names).to_a.each do |t|
+      t.video.to_a.each do |v|
+        unless ids.include?(v.id)
+          ids.add(v.id)
+          tagged_videos.push(v)
+        end
+
+      end
     end
     tagged_videos
   end
 
-  def tag_counts
-    Tag.select('tags.*, count(video_tags.tag_id) as count').joins(:video_tags).group('tags.id')
-  end
 
   def tag_list
     tags.map(&:name).join(', ')

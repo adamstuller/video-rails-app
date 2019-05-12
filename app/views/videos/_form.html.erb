@@ -31,7 +31,64 @@
     <%= form.text_area :desc %>
   </div>
 
+  <div class="field chips chips-autocomplete">
+
+  </div>
+
+  <input id="tags_id" name="video[tag_list]" type="hidden">
+
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<script>
+    let tagsData = {}
+    let chosenTags = []
+    document.addEventListener('DOMContentLoaded', function() {
+        let tags = []
+        <% @all_tags.each do |tag| %>
+          tags.push('<%= tag.name %>')
+        <% end %>
+        tags.forEach( e => {
+            tagsData[e] = null
+        })
+        console.log(tagsData)
+
+        let elem = document.querySelectorAll('.chips-autocomplete');
+        let instance = M.Chips.init(elem);
+        <% @curr_tags.each do |tag| %>
+          instance[0].addChip({
+              tag: '<%= tag.name %>'
+          })
+          chosenTags.push( '<%= tag.name %>')
+        <% end %>
+
+    });
+
+
+    $('.chips-autocomplete').chips({
+        autocompleteOptions: {
+            data: tagsData,
+            limit: 5,
+            minLength: 1
+        },
+        onChipAdd: (e , chip) => {
+            let tagname = chip.childNodes[0].textContent
+            console.log(tagname)
+            chosenTags.push(tagname)
+            $('#tags_id').val(chosenTags)
+        },
+        onChipDelete: (e, chip) => {
+            let tagname = chip.childNodes[0].textContent
+            console.log(tagname)
+            let tagIndex = chosenTags.indexOf(tagname)
+            if( tagIndex > -1 ){
+                chosenTags.splice(tagIndex, 1)
+            }
+            $('#tags_id').val(chosenTags)
+        }
+    });
+
+</script>

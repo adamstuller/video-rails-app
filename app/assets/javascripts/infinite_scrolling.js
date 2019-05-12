@@ -1,7 +1,5 @@
 const infiniteScrolling = () => {
     const THRESHOLD = 100;
-
-
     if( $('#infinite-scrolling').length ){
 
         $('#infinite-scrolling').hide()
@@ -15,10 +13,10 @@ const infiniteScrolling = () => {
                     let nextPagination
                     $.each(html , (i, el) => {
                         if(el.nodeName === 'MAIN'){
-                            const newProds = el.children[0].children[0].children[0]
-                            $('#products').append(newProds)
-                            nextPagination = el.children[0].children[1].children[0]
-                            console.log('replacing ' + nextPagination.children[2])
+                            const newProds = el.getElementsByClassName('scrollable')
+                            $('#products').append( newProds)
+                            nextPagination = el.getElementsByClassName('pagination')
+                            console.log( nextPagination)
                             $('#infinite-scrolling').replaceWith($(nextPagination))
                             $('#infinite-scrolling').hide()
                         }
