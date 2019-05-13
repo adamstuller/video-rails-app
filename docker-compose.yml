@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  postgres:
+    image:  postgres
+    container_name: postgreSQL
+    environment: 
+        POSTGRES_PASSWORD: dbs
+        POSTGRES_USER: dbs
+    volumes: 
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
+    init: true
+  
+  redis:
+    image:   redis
+    container_name: redisDB
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - 6379:6379
+    restart: always  
+  
+volumes:
+  postgres-data:
