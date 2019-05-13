@@ -54,3 +54,7 @@ Naplnil som databázu falošnými údajmi. Použil som na to gem Faker. Vytvoril
 kedže to je dabulk, ktorá sa dá relativne jednoducho vierohodne naplniť. Videí je v projekte iba okolo 5000.
 Pridanie videa, spolu s dvoma súbormi na thumbnail a video súbor je totižto oveľa zložitejšia operácia cez 
 viacero tabuliek. 
+
+
+
+
