@@ -63,4 +63,45 @@ def seed_videos(rows)
 
 end
 
-seed_videos(5000)
+# seed_videos(5000)
+#
+
+def seed_tags(rows)
+  sql_q = "INSERT INTO tags
+ (name, created_at, updated_at)
+ VALUES "
+
+  for a in (0..rows) do
+    q = "(
+     '#{PG::Connection.escape_string(Faker::Books::Lovecraft.words(1)[0])}',
+     CURRENT_TIMESTAMP,
+     CURRENT_TIMESTAMP
+   ),"
+    sql_q += q
+  end
+
+  return sql_q.chomp(",") # remove last ','
+end
+
+# query = seed_tags(10)
+# ActiveRecord::Base.connection.execute(query)
+# count = 0.0
+# all = 500_000.0
+# for _ in (0..1000) do
+#   query = seed_users(1000)
+#   ActiveRecord::Base.connection.execute(query)
+#   count += 500
+#   puts count / all
+#   puts "Tags were inserted"
+# end
+
+# puts " were inserted!!!!"
+
+def update_users(rows)
+  0..rows do
+    times = Random.rand(5)
+    0..times do
+      
+    end
+  end
+end

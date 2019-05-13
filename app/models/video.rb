@@ -5,7 +5,7 @@ class Video < ApplicationRecord
 
   after_create :after_create
 
-  has_many :video_tags
+  has_many :video_tags, dependent: :destroy
   has_many :tags, through: :video_tags
 
   has_one_attached :video_file
