@@ -11,6 +11,12 @@ class VideosController < ApplicationController
     # @videos = Video.paginate(page: params[:page])
     @all_tags = Tag.all
 
+    tag_counts = Video.joins(:video_tags).distinct.select('videos.id, COUNT(video_tags.*) AS tags_count').group('videos.id')
+    @tag_hash = {}
+    tag_counts.each do |tc|
+      @tag_hash[tc.id] = tc.tags_count
+    end
+
     if params[:tag]
       @videos = Video.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
     else

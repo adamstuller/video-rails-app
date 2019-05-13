@@ -3,10 +3,10 @@
 
   <div class="row">
     <div class="container">
-      <div class="chips-autocomplete col m10">
+      <div class="chips-autocomplete col m10 ">
       </div>
       <div class="col m2">
-        <a id='search-button' class="waves-effect waves-light btn">Search</a>
+        <a id='search-button' class="waves-effect waves-light btn blue lighten-1">Search</a>
       </div>
     </div>
 
@@ -24,6 +24,9 @@
                     <%= image_tag(url_for(video.thumbnail)) %>
                   <%end %>
                   <span class="card-title"><%= video.name %></span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light blue darken-1 center-align" >
+                    <%= @tag_hash[video.id] ?  @tag_hash[video.id] : 0 %>
+                  </a>
                 </div>
                 <div class="card-content white-text">
                   <p><%= video.desc %></p>

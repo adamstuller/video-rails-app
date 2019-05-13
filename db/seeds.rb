@@ -97,11 +97,19 @@ end
 
 # puts " were inserted!!!!"
 
-def update_users(rows)
-  0..rows do
-    times = Random.rand(5)
-    0..times do
-      
+def add_tags()
+  Video.all.to_a.each do |video|
+    t = Random.rand(5)
+    t.times do
+      begin
+        tag_id = Random.rand(40)
+        tag = Tag.find(tag_id)
+        video.video_tags.create(tag: tag)
+      rescue
+        puts 'nevyslo'
+      end
     end
   end
 end
+
+add_tags
