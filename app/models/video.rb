@@ -8,6 +8,9 @@ class Video < ApplicationRecord
   has_many :video_tags, dependent: :destroy
   has_many :tags, through: :video_tags
 
+  has_many :user_videos, dependent: :destroy
+  has_many :users, through: :user_videos
+
   has_one_attached :video_file
   has_one_attached :thumbnail
 
