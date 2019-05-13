@@ -16,7 +16,6 @@ const infiniteScrolling = () => {
                             const newProds = el.getElementsByClassName('scrollable')
                             $('#products').append( newProds)
                             nextPagination = el.getElementsByClassName('pagination')
-                            console.log( nextPagination)
                             $('#infinite-scrolling').replaceWith($(nextPagination))
                             $('#infinite-scrolling').hide()
                         }

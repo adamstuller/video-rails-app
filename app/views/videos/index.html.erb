@@ -40,64 +40,76 @@
 
 
   </div>
-  <div class="row ">
+  <div class="row " id="pagination_row">
     <%= will_paginate @videos , :id => 'infinite-scrolling' %>
   </div>
 
 
 <script>
-    let tagsData = {}
-    const chosenTags = []
-    document.addEventListener('DOMContentLoaded', function() {
-        let tags = []
-        <% @all_tags.each do |tag| %>
-        tags.push('<%= tag.name %>')
-        <% end %>
-        tags.forEach( e => {
-            tagsData[e] = null
-        })
 
-        $('#search-button').click( () => {
+  const tagging_index = () => {
+      let tagsData = {}
+      const chosenTags = []
+
+      let tags = []
+      <% @all_tags.each do |tag| %>
+      tags.push('<%= tag.name %>')
+      <% end %>
+      tags.forEach( e => {
+          tagsData[e] = null
+      })
+
+      $('#search-button').click( () => {
           console.log(chosenTags)
-            jQuery.get("http://localhost:3000/tags", {tag: chosenTags},(data) => {
-                const html = jQuery.parseHTML(data)
-                let videos_payload, scrolling_payload
-                $.each(html , (i, el) => {
-                    if(el.nodeName === 'MAIN'){
-                        videos_payload = el.getElementsByClassName('scrollable')
-                        $('#products').replaceWith(videos_payload)
-                        scrolling_payload = el.getElementsByClassName('pagination')
-                        $('.pagination').replaceWith(scrolling_payload)
-                    }
-                })
-            })
-            // window.location.replace("http://localhost:3000/")
-        })
-    });
+          jQuery.get("http://localhost:3000/tags", {tag: chosenTags},(data) => {
+              const html = jQuery.parseHTML(data)
+              let videos_payload, scrolling_payload
+              $.each(html , (i, el) => {
+                  if(el.nodeName === 'MAIN'){
+                      videos_payload = el.getElementsByClassName('scrollable')
+                      $('#products').replaceWith(videos_payload)
+                      scrolling_payload = el.getElementsByClassName('pagination')
+                      console.log(scrolling_payload)
+                      if($('.pagination').length == 0){
+                          $('#pagination_row').append(scrolling_payload)
+                          console.log('Appended')
+                      }
+                      else{
+                          $('.pagination').replaceWith(scrolling_payload)
+                      }
+
+                  }
+              })
+          })
+      })
+
+      $('.chips-autocomplete').chips({
+          autocompleteOptions: {
+              data: tagsData,
+              limit: 5,
+              minLength: 1
+          },
+          onChipAdd: (e , chip) => {
+              let tagname = chip.childNodes[0].textContent
+              console.log(tagname)
+              chosenTags.push(tagname)
+              $('#tags_id').val(chosenTags)
+          },
+          onChipDelete: (e, chip) => {
+              let tagname = chip.childNodes[0].textContent
+              console.log(tagname)
+              let tagIndex = chosenTags.indexOf(tagname)
+              if( tagIndex > -1 ){
+                  chosenTags.splice(tagIndex, 1)
+              }
+              $('#tags_id').val(chosenTags)
+          }
+      });
+  }
+
+  jQuery(tagging_index)
 
 
-    $('.chips-autocomplete').chips({
-        autocompleteOptions: {
-            data: tagsData,
-            limit: 5,
-            minLength: 1
-        },
-        onChipAdd: (e , chip) => {
-            let tagname = chip.childNodes[0].textContent
-            console.log(tagname)
-            chosenTags.push(tagname)
-            $('#tags_id').val(chosenTags)
-        },
-        onChipDelete: (e, chip) => {
-            let tagname = chip.childNodes[0].textContent
-            console.log(tagname)
-            let tagIndex = chosenTags.indexOf(tagname)
-            if( tagIndex > -1 ){
-                chosenTags.splice(tagIndex, 1)
-            }
-            $('#tags_id').val(chosenTags)
-        }
-    });
 
 </script>
 
