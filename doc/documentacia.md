@@ -1,6 +1,6 @@
 #Tretie odovzdanie
 
-Do tretieho, konečného odovzdania sa mi podarilo implementovať všetky požadované scenáre,
+Do tretieho, konečného odovzdania sa mi podarilo implementovať všetky scenáre,
 ktoré boli požadované pre tento projekt. 
 
 
