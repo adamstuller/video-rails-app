@@ -2,7 +2,7 @@
 
 
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle, :display_editor]
 
   skip_before_action :require_user, only: [:index]
 
@@ -84,6 +84,13 @@ class VideosController < ApplicationController
     @video.add_subtitle(params[:subtitle])
   end
 
+  def display_editor
+    respond_to do |format|
+      format.html { render :editor }
+    end
+  end
+
+
   private
 
   def set_video
@@ -93,6 +100,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id , :subtitle, :page, :tag_list, :tags)
+    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id, :subtitle, :page, :tag_list, :tags)
   end
 end

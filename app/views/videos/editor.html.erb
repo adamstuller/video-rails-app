@@ -1,0 +1,94 @@
+
+<!--This is controlled by vue instance-->
+<div id="editor">
+
+<!--  <div class="row">-->
+    <div style="width: 100%">
+      <section class="section-video">
+        <div class="div-video">
+          <%= video_tag url_for(@video.video_file),  :controls => true, :class => "responsive-video" %>
+        </div>
+      </section>
+<!--      <section class="section-form__subtitles">-->
+<!--        <div class="div-form">-->
+<!--          <form>-->
+<!--            <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active" active="true" v-model="subtitle">-->
+<!--            <button type="submit" id="submit-text-button" class="waves-effect waves-light btn">-->
+<!--              Add Subtitle-->
+<!--            </button>-->
+<!--          </form>-->
+<!--        </div>-->
+
+<!--      </section>-->
+
+
+
+<!--      -->
+
+    </div>
+
+
+<!--  </div>-->
+
+
+</div>
+
+
+
+<script>
+
+
+    var app = new Vue({
+        el: '#editor',
+        data: {
+            subtitle: 'ax',
+            id: <%= @video.id %>
+        },
+        methods: {
+            addSubtitle() {
+                jQuery.post(`http://localhost:3000/videos/${id}/subtitle`,
+                    {
+                        video_id: this.id,
+                        subtitle: this.subtitle
+                    }, () => {
+                        location.reload()
+                    })
+            },
+            mounted(){
+                console.log('Vue mounted')
+            }
+        }
+    })
+
+</script>
+
+
+<style>
+
+  .section-form__subtitles {
+    display: inline-block;
+    width: 20%;
+    vertical-align: center;
+  }
+
+  .section-video {
+    display: inline-block;
+    width: 100%;
+    vertical-align: center ;
+    align:left;
+
+
+    margin: 10px;
+  }
+  .div-video {
+    padding: 10px;
+    border: thin solid black;
+  }
+  .div-form {
+    padding: 10px;
+    border: thin solid green;
+    vertical-align: center;
+  }
+
+
+</style>

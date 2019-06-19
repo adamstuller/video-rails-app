@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require materialize
 //= require activestorage
+//= require vue
 //= require turbolinks
 //= require_tree .
 
@@ -22,16 +23,19 @@
 $( document ).on('turbolinks:load',function(){
     $(".dropdown-trigger").dropdown();
     $('.sidenav').sidenav();
-    $("#submit-text-button").click( function (e) {
-        e.preventDefault()
+    // $("#submit-text-button").click( function (e) {
+    //     e.preventDefault()
+    //
+    //     const subtitle = $("#subtitle").val();
+    //     jQuery.post(`http://localhost:3000/videos/${id}/subtitle`,
+    //         {video_id: id,
+    //         subtitle: subtitle}, () => {
+    //             location.reload()
+    //         })
+    // })
 
-        const subtitle = $("#subtitle").val();
-        jQuery.post(`http://localhost:3000/videos/${id}/subtitle`,
-            {video_id: id,
-            subtitle: subtitle}, () => {
-                location.reload()
-            })
-    })
+
+
 })
 
 

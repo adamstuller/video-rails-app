@@ -1,43 +1,44 @@
 
+<div class="container from-top-padding">
+  <div class="row ">
+    <div class="container ">
 
-<div class="row ">
-  <div class="container ">
+      <div class="card col m9  " , style="color:#18ABFD">
+        <div class="section">
+          <%= video_tag url_for(@video.video_file),  :controls => true, :class => "responsive-video " %>
+          <p>
+            <strong>Name:</strong>
+            <%= @video.name %>
+          </p>
+          <p>
+            <strong>Desc:</strong>
+            <%= @video.desc %>
+          </p>
 
-    <div class="card col m9  " , style="color:#18ABFD">
-      <div class="section">
-        <%= video_tag url_for(@video.video_file),  :controls => true, :class => "responsive-video " %>
-        <p>
-          <strong>Name:</strong>
-          <%= @video.name %>
-        </p>
-        <p>
-          <strong>Desc:</strong>
-          <%= @video.desc %>
-        </p>
-
-        <p>
-          <% @video.tags.each { |tag| %>
-            #<%=tag.name %>
-          <% } %>
-        </p>
-        <%= link_to 'Edit', edit_video_path(@video) %> |
-        <%= link_to 'Back', root_path %>
-      </div>
-      <p id="notice"><%= notice %></p>
-    </div>
-
-    <div class="card col s3 push -s9 " >
-
-      <form >
-        <div class="input-field col s12">
-          <label for="subtitle">Write your text here</label>
-          <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active" active="true">
-          <button type="submit" id="submit-text-button" class="waves-effect waves-light btn">Edit</button>
+          <p>
+            <% @video.tags.each { |tag| %>
+              #<%=tag.name %>
+            <% } %>
+          </p>
+          <%= link_to 'Edit', edit_video_path(@video) %> |
+          <%= link_to 'Back', root_path %>
         </div>
-      </form>
+        <p id="notice"><%= notice %></p>
+      </div>
+
+      <div class="card col s3 push -s9 " >
+
+        <form >
+          <div class="input-field col s12">
+            <label for="subtitle">Write your text here</label>
+            <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active" active="true">
+            <button type="submit" id="submit-text-button" class="waves-effect waves-light btn">Edit</button>
+          </div>
+        </form>
+      </div>
+
+
     </div>
-
-
   </div>
 </div>
 
