@@ -1,36 +1,84 @@
 
 <!--This is controlled by vue instance-->
 <div id="editor">
-
-<!--  <div class="row">-->
-    <div style="width: 100%">
+<!--<div class="container">-->
+  <div class="row">
+    <div class="div-editor">
       <section class="section-video">
-        <div class="div-video">
           <%= video_tag url_for(@video.video_file),  :controls => true, :class => "responsive-video" %>
-        </div>
       </section>
-<!--      <section class="section-form__subtitles">-->
-<!--        <div class="div-form">-->
-<!--          <form>-->
-<!--            <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active" active="true" v-model="subtitle">-->
-<!--            <button type="submit" id="submit-text-button" class="waves-effect waves-light btn">-->
-<!--              Add Subtitle-->
-<!--            </button>-->
-<!--          </form>-->
-<!--        </div>-->
-
-<!--      </section>-->
-
+      <section class="section-form__subtitles">
+            <nav class="nav-extended blue">
+                <ul class="tabs tabs-transparent blue">
+                  <li class="tab"><a v-bind:class="activeOptions.text ? 'active': '' "
+                                     @click="setText">Text</a></li>
+                  <li class="tab"><a v-bind:class="activeOptions.audio ? 'active': '' " @click="setAudio">
+                    Audio</a></li>
+                  <li class="tab"><a v-bind:class="activeOptions.effect ? 'active': '' " @click="setEffect">Effects</a></li>
+                </ul>
+            </nav>
 
 
-<!--      -->
+
+
+        <div id="text-form" v-bind:class="activeOptions.text ? '' : 'hide'">
+            <div class="div-form__content">
+              <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active form-item" active="true" v-model="subtitle">
+              <div class="input-field form-item">
+                <select>
+                  <option value="" disabled selected>Choose your font</option>
+                  <option value="1">Kurva font</option>
+                  <option value="2">Pici font</option>
+                  <option value="3">Jebem font</option>
+                </select>
+
+                <label>Font</label>
+              </div>
+              <div class="input-field form-item"  id="input-number">
+                <input type="number" value="12" min="1" max="100" step="1" data-number-to-fixed="2" data-number-stepfactor="100" />
+                <label>Size</label>
+              </div>
+
+              <div class="input-field form-item" id="input-fontstyle">
+                <select>
+                  <option value="" disabled selected>Regular</option>
+                  <option value="1">Bold</option>
+                  <option value="2">Italic</option>
+                  <option value="3">Dashed</option>
+                </select>
+
+                <label>Style</label>
+              </div>
+              <button type="submit" id="submit-text-button" @click="addSubtitle" class="waves-effect waves-light btn blue form-item">
+                Add Subtitle
+              </button>
+          </div>
+        </div>
+
+        <div id="audio-form" v-bind:class="activeOptions.audio ? '' : 'hide'">
+<!--          <h1>This is a Audio</h1>-->
+
+          <div class="scrollbar">
+
+          </div>
+        </div>
+
+        <div id="effect-form" v-bind:class="activeOptions.effect ? '' : 'hide'">
+          <h1>This is Effects</h1>
+        </div>
+
+      </section>
+
+
+
+
 
     </div>
 
 
-<!--  </div>-->
+  </div>
 
-
+<!--</div>-->
 </div>
 
 
@@ -38,24 +86,63 @@
 <script>
 
 
+//    document.addEventListener('DOMContentLoaded', function() {
+//        var elems = document.querySelectorAll('select');
+//        var instances = M.FormSelect.init(elems, options);
+//    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+
+    let  old_id = <%= @video.id %>
+
     var app = new Vue({
         el: '#editor',
         data: {
             subtitle: 'ax',
-            id: <%= @video.id %>
+            id: old_id,
+            activeOptions: {
+                audio: false,
+                text: true,
+                effect: false
+            }
         },
         methods: {
             addSubtitle() {
-                jQuery.post(`http://localhost:3000/videos/${id}/subtitle`,
+                jQuery.post(`http://localhost:3000/videos/${this.id}/subtitle`,
                     {
-                        video_id: this.id,
+                        video_id: old_id,
                         subtitle: this.subtitle
                     }, () => {
                         location.reload()
                     })
+
+                console.log(this.id, old_id)
+                console.log(this.subtitle)
             },
-            mounted(){
-                console.log('Vue mounted')
+            setAudio(){
+                if( !this.activeOptions.audio ){
+                    this.activeOptions.audio = true;
+                    this.activeOptions.text = false;
+                    this.activeOptions.effect = false;
+                }
+            },
+            setText(){
+                if( !this.activeOptions.text ){
+                    this.activeOptions.audio = false;
+                    this.activeOptions.text = true;
+                    this.activeOptions.effect = false;
+                }
+            },
+            setEffect(){
+                if( !this.activeOptions.effect ){
+                    this.activeOptions.audio = false;
+                    this.activeOptions.text = false;
+                    this.activeOptions.effect = true;
+                }
             }
         }
     })
@@ -66,29 +153,71 @@
 <style>
 
   .section-form__subtitles {
+    position: absolute;
     display: inline-block;
-    width: 20%;
-    vertical-align: center;
+    width: 30%;
+    border-bottom: thin solid black;
+    border-right: thin solid black;
+    border-top: thin solid black;
+
+    vertical-align: middle;
+    height: auto;
+    /*margin: 10px;*/
+    right: 0px;
   }
 
   .section-video {
+    position: absolute;
     display: inline-block;
-    width: 100%;
-    vertical-align: center ;
-    align:left;
-
-
-    margin: 10px;
-  }
-  .div-video {
-    padding: 10px;
+    width: 70%;
+    vertical-align: middle ;
+    padding: 30px;
     border: thin solid black;
-  }
-  .div-form {
-    padding: 10px;
-    border: thin solid green;
-    vertical-align: center;
+    /*bottom: 0px;*/
   }
 
+  .div-editor {
+    position: relative;
+    width: 100%;
+    height: 44.9rem;
+
+  }
+  .div-form__content{
+    padding: 10px;
+
+  }
+
+  .form-item {
+    margin: 20px 0px;
+  }
+
+
+
+  #input-number {
+    width: 20%;
+    /*position: relative;*/
+    display: inline-block;
+
+  }
+
+    #input-fontstyle {
+      display: inline-block;
+      /*position: relative;*/
+      /*right: 0px;*/
+      width: 60%;
+      float: right;
+    }
+
+  #submit-text-button {
+    float: right;
+  }
+
+    .scrollbar{
+      position:absolute;
+      background-color: #B00100 ;
+      width: 100%;
+      height: 30px;
+      padding: 20px;
+    }
 
 </style>
