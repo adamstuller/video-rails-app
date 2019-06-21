@@ -31,14 +31,43 @@ class Video < ApplicationRecord
     end
   end
 
-  def add_subtitle(subtitle, fontsize)
+  def add_subtitle(subtitle, fontsize, font)
     video_path = ActiveStorage::Blob.service.send(:path_for, video_file.key).to_s
     temp_storage = Rails.root.join('tmp', 'storage', 'temp.mp4').to_s
 
+    if font != ''
+      font_option = 'fontfile=' + font + ':'
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts  font
+      puts 'jdhakj'
+      puts  font_option
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+      puts
+    else
+      font_option = ''
+    end
 
     File.delete(temp_storage) if File.file?(temp_storage)
 
-    system `ffmpeg -i #{video_path} -vf drawtext="fontsize=#{fontsize}: fontcolor=white: text='#{subtitle}': x=(w-text_w)/2: y=(h-text_h)*(3/4)"  #{temp_storage}`
+    system `ffmpeg -i #{video_path} -vf drawtext="#{font_option}fontsize=#{fontsize}: fontcolor=white: text='#{subtitle}': x=(w-text_w)/2: y=(h-text_h)*(3/4)"  #{temp_storage}`
+
 
     if File.file?(temp_storage)
       video_file.purge

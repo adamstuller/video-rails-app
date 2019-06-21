@@ -25,11 +25,12 @@
             <div class="div-form__content">
               <input placeholder="Your text" id="subtitle" name="text" type="text" class="validate active form-item" active="true" v-model="subtitle">
               <div class="input-field form-item">
-                <select>
+                <select v-model="font">
                   <option value="" disabled selected>Choose your font</option>
-                  <option value="1">Kurva font</option>
-                  <option value="2">Pici font</option>
-                  <option value="3">Jebem font</option>
+                  <% @fonts.each { |font |   %>
+                    <option value="<%= font.path %>"><%= font.name%></option>
+                  <% } %>
+
                 </select>
 
                 <label>Font</label>
@@ -49,6 +50,9 @@
 
                 <label>Style</label>
               </div>
+
+
+
 
               <button type="submit" id="submit-text-button" @click="addSubtitle" class="waves-effect waves-light btn blue form-item">
                 Add Subtitle
@@ -87,12 +91,8 @@
 <script>
 
 
-//    document.addEventListener('DOMContentLoaded', function() {
-//        var elems = document.querySelectorAll('select');
-//        var instances = M.FormSelect.init(elems, options);
-//    });
 
-    // Or with jQuery
+
 
     $(document).ready(function(){
         $('select').formSelect();
@@ -108,7 +108,8 @@
                 text: true,
                 effect: false
             },
-            fontSize: 12
+            fontSize: 12,
+            font: -1
         },
         methods: {
             addSubtitle() {
@@ -116,13 +117,15 @@
                     {
                         video_id: this.id,
                         subtitle: this.subtitle,
-                        fontsize: this.fontSize
+                        fontsize: this.fontSize,
+                        font: this.font
                     }, () => {
                         location.reload()
                     })
 
-                console.log(this.id, old_id)
+                console.log(this.id)
                 console.log(this.subtitle)
+                console.log(this.font)
             },
             setAudio(){
                 if( !this.activeOptions.audio ){
@@ -152,6 +155,11 @@
 
 
 <style>
+
+  @font-face {
+    font-family: "American Typewriter";
+    src: url('/app/assets/fonts/AmericanTypewriter.ttc');
+  }
 
   .section-form__subtitles {
     position: absolute;

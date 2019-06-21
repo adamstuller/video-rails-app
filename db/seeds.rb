@@ -133,10 +133,9 @@ def add_fonts
 
 
   files_array.each do |file|
-    puts file
-    puts File.extname(file)
-    puts File.basename(file)
-    puts File.basename(file, File.extname(file))
+    f = Font.new(name:  File.basename(file, File.extname(file)), path: file)
+    f.save
+
 
   end
 end
