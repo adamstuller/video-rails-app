@@ -112,4 +112,33 @@ def add_tags()
   end
 end
 
-add_tags
+# add_tags
+#
+
+def add_fonts
+
+  files_array = []
+  fonts_path = Rails.root.join('app', 'assets', 'fonts').to_s
+  Dir.foreach(fonts_path) do |item|
+    if item == '.' || item == '..' || item == '.git'
+      next
+    elsif File.file? Rails.root.join(fonts_path, item).to_s and ['.ttf', '.ttc', 'otf'].include?(File.extname(item))
+      files_array << Rails.root.join(fonts_path, item)
+    end
+
+
+
+  end
+
+
+
+  files_array.each do |file|
+    puts file
+    puts File.extname(file)
+    puts File.basename(file)
+    puts File.basename(file, File.extname(file))
+
+  end
+end
+
+add_fonts
