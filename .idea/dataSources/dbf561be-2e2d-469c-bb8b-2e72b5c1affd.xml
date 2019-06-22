@@ -2,7 +2,7 @@
 <dataSource name="project_development@localhost">
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
     <root id="1">
-      <ServerVersion>11.2</ServerVersion>
+      <ServerVersion>11.3</ServerVersion>
     </root>
     <database id="2" parent="1" name="dbs">
       <ObjectId>16384</ObjectId>
@@ -19,15 +19,17 @@
       <ObjectId>16385</ObjectId>
       <StateNumber>570</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>27153</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1183</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16403|16405|1
 sequence|table|16415|16417|1
 sequence|table|16433|16435|1
-sequence|table|16456|16458|1
-sequence|table|16528|16530|1
-sequence|table|16539|16541|1
+sequence|table|16444|16446|1
+sequence|table|16455|16457|1
+sequence|table|16466|16468|1
+sequence|table|16486|16488|1
+sequence|table|16506|16508|1
 </Relations>
     </database>
     <database id="5" parent="1" name="project_test">
@@ -118,7 +120,7 @@ sequence|table|16539|16541|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>dbs</Owner>
-      <IntrospectionStateNumber>27154</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1184</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -194,15 +196,7 @@ sequence|table|16539|16541|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="30" parent="20" name="tags_id_seq">
-      <ObjectId>16528</ObjectId>
-      <Owner>dbs</Owner>
-      <StateNumber>27120</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>bigint</DataType>
-    </sequence>
-    <sequence id="31" parent="20" name="users_id_seq">
+    <sequence id="30" parent="20" name="users_id_seq">
       <ObjectId>16456</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>910</StateNumber>
@@ -210,15 +204,7 @@ sequence|table|16539|16541|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="32" parent="20" name="video_tags_id_seq">
-      <ObjectId>16539</ObjectId>
-      <Owner>dbs</Owner>
-      <StateNumber>27123</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>bigint</DataType>
-    </sequence>
-    <sequence id="33" parent="20" name="videos_id_seq">
+    <sequence id="31" parent="20" name="videos_id_seq">
       <ObjectId>16433</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>575</StateNumber>
@@ -226,47 +212,37 @@ sequence|table|16539|16541|1
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="34" parent="20" name="active_storage_attachments">
+    <table id="32" parent="20" name="active_storage_attachments">
       <ObjectId>16417</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>574</StateNumber>
     </table>
-    <table id="35" parent="20" name="active_storage_blobs">
+    <table id="33" parent="20" name="active_storage_blobs">
       <ObjectId>16405</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>574</StateNumber>
     </table>
-    <table id="36" parent="20" name="ar_internal_metadata">
+    <table id="34" parent="20" name="ar_internal_metadata">
       <ObjectId>16395</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>573</StateNumber>
     </table>
-    <table id="37" parent="20" name="schema_migrations">
+    <table id="35" parent="20" name="schema_migrations">
       <ObjectId>16387</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>572</StateNumber>
     </table>
-    <table id="38" parent="20" name="tags">
-      <ObjectId>16530</ObjectId>
-      <Owner>dbs</Owner>
-      <StateNumber>27123</StateNumber>
-    </table>
-    <table id="39" parent="20" name="users">
+    <table id="36" parent="20" name="users">
       <ObjectId>16458</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>942</StateNumber>
     </table>
-    <table id="40" parent="20" name="video_tags">
-      <ObjectId>16541</ObjectId>
-      <Owner>dbs</Owner>
-      <StateNumber>27123</StateNumber>
-    </table>
-    <table id="41" parent="20" name="videos">
+    <table id="37" parent="20" name="videos">
       <ObjectId>16435</ObjectId>
       <Owner>dbs</Owner>
       <StateNumber>27123</StateNumber>
     </table>
-    <column id="42" parent="34" name="id">
+    <column id="38" parent="32" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -274,48 +250,48 @@ sequence|table|16539|16541|1
       <DefaultExpression>nextval(&apos;active_storage_attachments_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="43" parent="34" name="name">
+    <column id="39" parent="32" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="34" name="record_type">
+    <column id="40" parent="32" name="record_type">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="45" parent="34" name="record_id">
+    <column id="41" parent="32" name="record_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="46" parent="34" name="blob_id">
+    <column id="42" parent="32" name="blob_id">
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="47" parent="34" name="created_at">
+    <column id="43" parent="32" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="48" parent="34" name="active_storage_attachments_pkey">
+    <index id="44" parent="32" name="active_storage_attachments_pkey">
       <ObjectId>16424</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="49" parent="34" name="index_active_storage_attachments_uniqueness">
+    <index id="45" parent="32" name="index_active_storage_attachments_uniqueness">
       <ObjectId>16432</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>record_type
@@ -324,19 +300,19 @@ name
 blob_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="50" parent="34" name="index_active_storage_attachments_on_blob_id">
+    <index id="46" parent="32" name="index_active_storage_attachments_on_blob_id">
       <ObjectId>16431</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>blob_id</ColNames>
     </index>
-    <key id="51" parent="34" name="active_storage_attachments_pkey">
+    <key id="47" parent="32" name="active_storage_attachments_pkey">
       <ObjectId>16425</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>active_storage_attachments_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="52" parent="34" name="fk_rails_c3b3935057">
+    <foreign-key id="48" parent="32" name="fk_rails_c3b3935057">
       <ObjectId>16426</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>blob_id</ColNames>
@@ -346,7 +322,7 @@ blob_id</ColNames>
       <RefKeyName>active_storage_blobs_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="53" parent="35" name="id">
+    <column id="49" parent="33" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -354,174 +330,133 @@ blob_id</ColNames>
       <DefaultExpression>nextval(&apos;active_storage_blobs_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="54" parent="35" name="key">
+    <column id="50" parent="33" name="key">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="55" parent="35" name="filename">
+    <column id="51" parent="33" name="filename">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="56" parent="35" name="content_type">
+    <column id="52" parent="33" name="content_type">
       <Position>4</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="57" parent="35" name="metadata">
+    <column id="53" parent="33" name="metadata">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <StateNumber>574</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="58" parent="35" name="byte_size">
+    <column id="54" parent="33" name="byte_size">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="59" parent="35" name="checksum">
+    <column id="55" parent="33" name="checksum">
       <Position>7</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="60" parent="35" name="created_at">
+    <column id="56" parent="33" name="created_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>574</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="61" parent="35" name="active_storage_blobs_pkey">
+    <index id="57" parent="33" name="active_storage_blobs_pkey">
       <ObjectId>16412</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="62" parent="35" name="index_active_storage_blobs_on_key">
+    <index id="58" parent="33" name="index_active_storage_blobs_on_key">
       <ObjectId>16414</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>key</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="63" parent="35" name="active_storage_blobs_pkey">
+    <key id="59" parent="33" name="active_storage_blobs_pkey">
       <ObjectId>16413</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>active_storage_blobs_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="64" parent="36" name="key">
+    <column id="60" parent="34" name="key">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>573</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="36" name="value">
+    <column id="61" parent="34" name="value">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>573</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="66" parent="36" name="created_at">
+    <column id="62" parent="34" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>573</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="67" parent="36" name="updated_at">
+    <column id="63" parent="34" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>573</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="68" parent="36" name="ar_internal_metadata_pkey">
+    <index id="64" parent="34" name="ar_internal_metadata_pkey">
       <ObjectId>16401</ObjectId>
       <StateNumber>573</StateNumber>
       <ColNames>key</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="69" parent="36" name="ar_internal_metadata_pkey">
+    <key id="65" parent="34" name="ar_internal_metadata_pkey">
       <ObjectId>16402</ObjectId>
       <StateNumber>573</StateNumber>
       <ColNames>key</ColNames>
       <UnderlyingIndexName>ar_internal_metadata_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="70" parent="37" name="version">
+    <column id="66" parent="35" name="version">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>572</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="71" parent="37" name="schema_migrations_pkey">
+    <index id="67" parent="35" name="schema_migrations_pkey">
       <ObjectId>16393</ObjectId>
       <StateNumber>572</StateNumber>
       <ColNames>version</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="72" parent="37" name="schema_migrations_pkey">
+    <key id="68" parent="35" name="schema_migrations_pkey">
       <ObjectId>16394</ObjectId>
       <StateNumber>572</StateNumber>
       <ColNames>version</ColNames>
       <UnderlyingIndexName>schema_migrations_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="73" parent="38" name="id">
-      <Position>1</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27120</StateNumber>
-      <DefaultExpression>nextval(&apos;tags_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="74" parent="38" name="name">
-      <Position>2</Position>
-      <DataType>varchar|0s</DataType>
-      <StateNumber>27120</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="75" parent="38" name="created_at">
-      <Position>3</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27120</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="76" parent="38" name="updated_at">
-      <Position>4</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27120</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <index id="77" parent="38" name="tags_pkey">
-      <ObjectId>16537</ObjectId>
-      <StateNumber>27120</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="78" parent="38" name="tags_pkey">
-      <ObjectId>16538</ObjectId>
-      <StateNumber>27120</StateNumber>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>tags_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="79" parent="39" name="id">
+    <column id="69" parent="36" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -529,129 +464,52 @@ blob_id</ColNames>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="80" parent="39" name="name">
+    <column id="70" parent="36" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>910</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="81" parent="39" name="email">
+    <column id="71" parent="36" name="email">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>910</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="82" parent="39" name="password_digest">
+    <column id="72" parent="36" name="password_digest">
       <Position>4</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>920</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="83" parent="39" name="created_at">
+    <column id="73" parent="36" name="created_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>942</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="84" parent="39" name="updated_at">
+    <column id="74" parent="36" name="updated_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>942</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="85" parent="39" name="users_pkey">
+    <index id="75" parent="36" name="users_pkey">
       <ObjectId>16465</ObjectId>
       <StateNumber>910</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="86" parent="39" name="users_pkey">
+    <key id="76" parent="36" name="users_pkey">
       <ObjectId>16466</ObjectId>
       <StateNumber>910</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="87" parent="40" name="id">
-      <Position>1</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27123</StateNumber>
-      <DefaultExpression>nextval(&apos;video_tags_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="88" parent="40" name="tag_id">
-      <Position>2</Position>
-      <DataType>bigint|0s</DataType>
-      <StateNumber>27123</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="89" parent="40" name="video_id">
-      <Position>3</Position>
-      <DataType>bigint|0s</DataType>
-      <StateNumber>27123</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="90" parent="40" name="created_at">
-      <Position>4</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27123</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="91" parent="40" name="updated_at">
-      <Position>5</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>27123</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <index id="92" parent="40" name="video_tags_pkey">
-      <ObjectId>16545</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="93" parent="40" name="index_video_tags_on_tag_id">
-      <ObjectId>16557</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>tag_id</ColNames>
-    </index>
-    <index id="94" parent="40" name="index_video_tags_on_video_id">
-      <ObjectId>16558</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>video_id</ColNames>
-    </index>
-    <key id="95" parent="40" name="video_tags_pkey">
-      <ObjectId>16546</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>video_tags_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="96" parent="40" name="fk_rails_af94da446b">
-      <ObjectId>16547</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>tag_id</ColNames>
-      <RefTableId>16530</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>tags</RefTableName>
-      <RefKeyName>tags_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="97" parent="40" name="fk_rails_fcdb957abf">
-      <ObjectId>16552</ObjectId>
-      <StateNumber>27123</StateNumber>
-      <ColNames>video_id</ColNames>
-      <RefTableId>16435</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>videos</RefTableName>
-      <RefKeyName>videos_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="98" parent="41" name="id">
+    <column id="77" parent="37" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -659,39 +517,39 @@ blob_id</ColNames>
       <DefaultExpression>nextval(&apos;videos_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="99" parent="41" name="name">
+    <column id="78" parent="37" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>575</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="100" parent="41" name="desc">
+    <column id="79" parent="37" name="desc">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <StateNumber>575</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="101" parent="41" name="created_at">
+    <column id="80" parent="37" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="102" parent="41" name="updated_at">
+    <column id="81" parent="37" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="103" parent="41" name="videos_pkey">
+    <index id="82" parent="37" name="videos_pkey">
       <ObjectId>16442</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="104" parent="41" name="videos_pkey">
+    <key id="83" parent="37" name="videos_pkey">
       <ObjectId>16443</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>id</ColNames>
