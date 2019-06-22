@@ -57,6 +57,29 @@ class Video < ApplicationRecord
     end
   end
 
+
+  def add_audio( audio_id )
+
+    video_path = ActiveStorage::Blob.service.send(:path_for, video_file.key).to_s
+    temp_storage = Rails.root.join('tmp', 'storage', 'temp.mp4').to_s
+    audio = Audio.find(audio_id)
+    audio_path = ActiveStorage::Blob.service.send(:path_for, audio.audio_file.key).to_s
+
+
+    File.delete(temp_storage) if File.file?(temp_storage)
+    system `ffmpeg -i #{video_path} -i #{audio_path}  -map 0:v:0 -map 1:a:0 -shortest #{temp_storage} `
+
+
+    if File.file?(temp_storage)
+      video_file.purge
+      video_file.attach(
+          io: File.open(temp_storage),
+          filename: 'new_video'
+      )
+    end
+
+  end
+
   def self.tagged_with(tag_names)
     require 'set'
     ids = Set.new

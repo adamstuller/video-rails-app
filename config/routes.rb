@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get 'tags/', to: 'videos#index'
   get 'videos/:id/editor', to: 'videos#display_editor'
+  post '/videos/:id/audio', to: 'videos#add_audio'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

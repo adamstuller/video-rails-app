@@ -2,7 +2,7 @@
 
 
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle, :display_editor]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle, :display_editor, :add_audio]
 
   skip_before_action :require_user, only: [:index]
 
@@ -84,6 +84,10 @@ class VideosController < ApplicationController
     @video.add_subtitle(params[:subtitle], params[:fontsize], params[:font], params[:color])
   end
 
+  def add_audio
+    @video.add_audio params[:audio_id]
+  end
+
   def display_editor
 
     @fonts = Font.all.order(:name)
@@ -104,6 +108,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id, :subtitle, :fontsize, :font, :page, :tag_list, :tags, :color)
+    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id, :subtitle, :fontsize, :font, :page, :tag_list, :tags, :color, :audio_id)
   end
 end

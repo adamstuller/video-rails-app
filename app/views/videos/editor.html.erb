@@ -63,11 +63,10 @@
           </div>
         </div>
 
-        <div id="audio-form" v-bind:class="activeOptions.audio ? '' : 'hide'">
+        <div id="div-audioholder" v-bind:class="activeOptions.audio ? '' : 'hide'">
 <!--          <h1>This is a Audio</h1>-->
 
 
-          <div id="div-audioholder">
             <% @audios.each do |a| %>
               <div class="div-audio__item">
                 <audio controls class="audio">
@@ -80,7 +79,6 @@
               </div>
 
             <% end %>
-          </div>
 
 
         </div>
@@ -202,7 +200,7 @@
     border-top: thin solid black;
 
     vertical-align: middle;
-    height: auto;
+    height: 103%;
     /*margin: 10px;*/
     right: 0px;
   }
@@ -293,6 +291,11 @@
     border: 0.5px black solid;
     position: relative;
   }
+    #div-audioholder {
+      overflow: scroll;
+      /*border: 5px black dashed;*/
+      height: 93%;
+    }
 
 
 
