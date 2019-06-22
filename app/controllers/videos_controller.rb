@@ -81,7 +81,7 @@ class VideosController < ApplicationController
   end
 
   def add_subtitle
-    @video.add_subtitle(params[:subtitle], params[:fontsize], params[:font])
+    @video.add_subtitle(params[:subtitle], params[:fontsize], params[:font], params[:color])
   end
 
   def display_editor
@@ -103,6 +103,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id, :subtitle, :fontsize, :font, :page, :tag_list, :tags)
+    params.require(:video).permit(:name, :desc, :video_file, :thumbnail, :id, :subtitle, :fontsize, :font, :page, :tag_list, :tags, :color)
   end
 end

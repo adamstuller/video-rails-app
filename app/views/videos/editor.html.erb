@@ -51,7 +51,10 @@
                 <label>Style</label>
               </div>
 
-
+              <div class="input-filed form-item" id="input-color">
+                <label id="color-label">Color</label>
+                <input type="color" id="color-input" name="favcolor" value="#ff0000" v-model="color">
+              </div>
 
 
               <button type="submit" id="submit-text-button" @click="addSubtitle" class="waves-effect waves-light btn blue form-item">
@@ -87,7 +90,6 @@
 </div>
 
 
-
 <script>
 
 
@@ -96,6 +98,7 @@
 
     $(document).ready(function(){
         $('select').formSelect();
+        $('#color-input').minicolors()
     });
 
     var app = new Vue({
@@ -109,7 +112,8 @@
                 effect: false
             },
             fontSize: 12,
-            font: -1
+            font: -1,
+            color: 0
         },
         methods: {
             addSubtitle() {
@@ -118,7 +122,8 @@
                         video_id: this.id,
                         subtitle: this.subtitle,
                         fontsize: this.fontSize,
-                        font: this.font
+                        font: this.font,
+                        color: this.color
                     }, () => {
                         location.reload()
                     })
@@ -155,6 +160,7 @@
 
 
 <style>
+
 
   @font-face {
     font-family: "American Typewriter";
@@ -228,5 +234,19 @@
       height: 90px;
       margin: 20px;
     }
+
+  #color-label{
+    position: relative;
+    bottom: 30px;
+    right: 63px
+  }
+
+    #color-input{
+      position: relative;
+      float: left;
+    }
+
+
+
 
 </style>

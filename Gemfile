@@ -49,6 +49,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+gem 'jquery-minicolors-rails'
 gem 'faker', '~> 1.9', '>= 1.9.3'
 
 
