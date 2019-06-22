@@ -87,6 +87,7 @@ class VideosController < ApplicationController
   def display_editor
 
     @fonts = Font.all.order(:name)
+    @audios = Audio.all.order(:name)
 
     respond_to do |format|
       format.html { render :editor }

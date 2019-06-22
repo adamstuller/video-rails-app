@@ -66,9 +66,23 @@
         <div id="audio-form" v-bind:class="activeOptions.audio ? '' : 'hide'">
 <!--          <h1>This is a Audio</h1>-->
 
-          <div class="scrollbar">
 
+          <div id="div-audioholder">
+            <% @audios.each do |a| %>
+              <div class="div-audio__item">
+                <audio controls class="audio">
+                  <source src="<%= url_for(a.audio_file) %>">
+                </audio>
+                <button type="submit" class="waves-effect waves-light btn blue audio-btn " @click="addAudio(<%=a.id %>)">
+                  <%= a.name %>
+                </button>
+<!--                <br>-->
+              </div>
+
+            <% end %>
           </div>
+
+
         </div>
 
         <div id="effect-form" v-bind:class="activeOptions.effect ? '' : 'hide'">
@@ -107,8 +121,8 @@
             subtitle: '',
             id: <%= @video.id %>,
             activeOptions: {
-                audio: false,
-                text: true,
+                audio: true,
+                text: false,
                 effect: false
             },
             fontSize: 12,
@@ -131,6 +145,18 @@
                 console.log(this.id)
                 console.log(this.subtitle)
                 console.log(this.font)
+            },
+            addAudio(audioId){
+                // console.log(audioId)
+              jQuery.post(`http://localhost:3000/videos/${this.id}/audio`,
+                  {
+                      video_id: this.id,
+                      audio_id: audioId
+
+                  },
+                  () => {
+                    location.reload();
+                  });
             },
             setAudio(){
                 if( !this.activeOptions.audio ){
@@ -246,6 +272,27 @@
       float: left;
     }
 
+    .audio{
+      display: inline-block;
+      margin-left: 7%;
+      margin-top: 10px;
+      /*z-index: -1;*/
+    }
+
+    .audio-btn{
+      display: inline-block;
+      width: 20%;
+      position: absolute;
+      bottom: 9px;
+      margin-left: 15px;
+      /*margin-top: 10px;*/
+      vertical-align: middle;
+    }
+
+  .div-audio__item{
+    border: 0.5px black solid;
+    position: relative;
+  }
 
 
 

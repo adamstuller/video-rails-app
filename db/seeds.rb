@@ -140,4 +140,21 @@ def add_fonts
   end
 end
 
-add_fonts
+# add_fonts
+
+def seed_audios(rows)
+  audio = Rails.root.join('tmp', 'storage', 'GodCut.mp3').to_s
+  (0..rows).each { |h|
+    a = Audio.new(name: Faker::Superhero.name)
+
+    a.audio_file.attach(
+        io: File.open(audio),
+        filename: 'new_video'
+    )
+    a.save
+    puts h
+  }
+
+end
+
+seed_audios 10
