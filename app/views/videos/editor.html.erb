@@ -55,13 +55,14 @@
               <div class="input-filed form-item" id="input-color">
                 <label id="color-label">Color</label>
                 <input type="color" id="color-input" name="favcolor" value="#ff0000" v-model="color">
-                {{ color }}
               </div>
 
 
               <button type="submit" id="submit-text-button" @click="addSubtitle" class="waves-effect waves-light btn blue form-item">
                 Add Subtitle
               </button>
+
+
           </div>
         </div>
 
@@ -109,7 +110,6 @@
 
 
 
-
     $(document).ready(function(){
         $('select').formSelect();
         $('#color-input').minicolors()
@@ -131,7 +131,7 @@
         },
         methods: {
             addSubtitle() {
-                jQuery.post(`http://localhost:3000/videos/${this.id}/subtitle`,
+                jQuery.post(`<%= request.base_url %>/videos/${this.id}/subtitle`,
                     {
                         video_id: this.id,
                         subtitle: this.subtitle,
@@ -142,13 +142,13 @@
                         location.reload()
                     })
 
-                console.log(this.id)
+
                 console.log(this.subtitle)
                 console.log(this.font)
             },
             addAudio(audioId){
                 // console.log(audioId)
-              jQuery.post(`http://localhost:3000/videos/${this.id}/audio`,
+              jQuery.post(`<%= request.base_url %>/videos/${this.id}/audio`,
                   {
                       video_id: this.id,
                       audio_id: audioId
