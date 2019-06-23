@@ -1,5 +1,5 @@
 # require 'VideoWorker'
-
+require 'will_paginate/array'
 
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy, :add_subtitle, :display_editor, :add_audio]
@@ -7,7 +7,7 @@ class VideosController < ApplicationController
   skip_before_action :require_user, only: [:index]
 
   def index
-    require 'will_paginate/array'
+
     # @videos = Video.paginate(page: params[:page])
     @all_tags = Tag.all
 
