@@ -15,6 +15,7 @@
                   <li class="tab"><a v-bind:class="activeOptions.audio ? 'active': '' " @click="setAudio">
                     Audio</a></li>
                   <li class="tab"><a v-bind:class="activeOptions.effect ? 'active': '' " @click="setEffect">Effects</a></li>
+                  <%= link_to 'Download', rails_blob_path(@video.video_file, disposition: 'attachment'), class: "tab", id: "down-tab" %>
                 </ul>
             </nav>
 
@@ -54,6 +55,7 @@
               <div class="input-filed form-item" id="input-color">
                 <label id="color-label">Color</label>
                 <input type="color" id="color-input" name="favcolor" value="#ff0000" v-model="color">
+                {{ color }}
               </div>
 
 
@@ -119,13 +121,13 @@
             subtitle: '',
             id: <%= @video.id %>,
             activeOptions: {
-                audio: true,
-                text: false,
+                audio: false,
+                text: true,
                 effect: false
             },
             fontSize: 12,
             font: -1,
-            color: 0
+            color:  '#000000'
         },
         methods: {
             addSubtitle() {
@@ -297,6 +299,10 @@
       height: 93%;
     }
 
+  #down-tab {
+    position: absolute;
+    right: 5%;
+  }
 
 
 </style>

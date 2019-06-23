@@ -52,7 +52,7 @@ class Video < ApplicationRecord
       video_file.purge
       video_file.attach(
         io: File.open(temp_storage),
-        filename: 'new_video'
+        filename: 'new_video.mp4'
       )
     end
   end
@@ -74,7 +74,7 @@ class Video < ApplicationRecord
       video_file.purge
       video_file.attach(
           io: File.open(temp_storage),
-          filename: 'new_video'
+          filename: 'new_video.mp4'
       )
     end
 
